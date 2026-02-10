@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lemon Cord - Futuristic Hub</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --dark-space: #0A0A10;
+  --deep-yellow: #FFE800;
+  --bright-yellow: #FFF36A;
+  --glow-yellow: rgba(255, 232, 0, 0.6);
+  --neon-yellow: #FFFF00;
+  --dark-yellow: #FFD700;
+  --border-color: rgba(255, 232, 0, 0.35);
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --card-bg: rgba(20, 20, 30, 0.75);
+  --transition-fast: all .4s cubic-bezier(.25,.8,.25,1);
+  --futuristic-bg: #0D0D15;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--futuristic-bg);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated background elements */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 232, 0, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(255, 232, 0, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(255, 232, 0, 0.05) 0%, transparent 50%);
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, transparent 50%, rgba(255, 232, 0, 0.03) 50%),
+    linear-gradient(transparent 50%, rgba(255, 232, 0, 0.03) 50%);
+  background-size: 50px 50px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Futuristic header with glowing effect */
+.header {
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.header h1 {
+  font-size: clamp(3.5rem, 10vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.header h1::before {
+  content: 'LEMON CORD';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: transparent;
+  background: linear-gradient(90deg, var(--deep-yellow), var(--bright-yellow), var(--neon-yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.header h1 span {
+  background: linear-gradient(90deg, var(--bright-yellow), var(--deep-yellow), var(--dark-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 2;
+}
+
+.header h1 span::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
+  border-radius: 50%;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.header p::before, .header p::after {
+  content: '✦';
+  color: var(--bright-yellow);
+  margin: 0 15px;
+  animation: pulse 2s infinite;
+}
+
+/* Enhanced hub grid */
+.hub-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  perspective: 1000px;
+}
+
+.hub-card {
+  background: var(--card-bg);
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 40px 30px;
+  width: 320px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: var(--transition-fast);
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hub-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 232, 0, 0.1), rgba(255, 232, 0, 0.05));
+  z-index: -1;
+  border-radius: 16px;
+}
+
+.hub-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--deep-yellow), var(--bright-yellow), var(--neon-yellow), var(--deep-yellow));
+  z-index: -2;
+  border-radius: 18px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.hub-card:hover::after {
+  opacity: 1;
+}
+
+.hub-card:hover {
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(255, 232, 0, 0.2);
+}
+
+.icon {
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  color: var(--bright-yellow);
+  position: relative;
+  display: inline-block;
+}
+
+.icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255, 232, 0, 0.2), transparent);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.hub-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.hub-card h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--deep-yellow), transparent);
+}
+
+.hub-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Enhanced social links */
+.social-links {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 100;
+}
+
+.social-icon {
+  width: 55px;
+  height: 55px;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 232, 0, 0.3);
+  border-radius: 50%;
+  color: var(--bright-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 232, 0, 0.3), transparent);
+  transition: left 0.7s;
+}
+
+.social-icon:hover::before {
+  left: 100%;
+}
+
+.social-icon:hover {
+  background: var(--deep-yellow);
+  color: black;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0 20px var(--glow-yellow);
+  border-color: transparent;
+}
+
+/* Futuristic elements */
+.futuristic-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 105%;
+  height: 105%;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, var(--deep-yellow), transparent, var(--deep-yellow)) 1;
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Animated dots in background */
+.animated-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--bright-yellow);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-1000px) translateX(500px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Page transition */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--deep-yellow), #000);
+  z-index: 9999;
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.page-transition.animate-in {
+  animation: slideIn 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.page-transition.animate-out {
+  animation: slideOut 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  transform-origin: top;
+}
+
+@keyframes slideIn {
+  from { transform: scaleY(1); }
+  to { transform: scaleY(0); }
+}
+
+@keyframes slideOut {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hub-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-links {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .header h1 {
+    font-size: clamp(2.8rem, 8vw, 4rem);
+  }
+}
+
+/* Add more animated dots for futuristic feel */
+</style>
+</head>
+
+<body>
+
+<div class="page-transition" id="pageTransition"></div>
+
+<!-- Animated background dots -->
+<div class="animated-dots" id="animatedDots"></div>
+
+<!-- Futuristic border effect -->
+<div class="futuristic-border"></div>
+
+<div class="container">
+<header class="header">
+<h1>Lemon <span>Cord</span></h1>
+<p>Your Minecraft customization center</p>
+</header>
+
+<div class="hub-grid">
+<a href="totem-maker.html" class="hub-card nav-link">
+<div class="icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+<h2>Totem Creator</h2>
+<p>Create animated custom totems from any GIF in seconds with our advanced tool.</p>
+</a>
+
+<!-- Additional card for future expansion -->
+<a href="#" class="hub-card">
+<div class="icon"><i class="fas fa-cube"></i></div>
+<h2>Resource Hub</h2>
+<p>Access exclusive Minecraft resources, mods, and texture packs. Coming soon!</p>
+</a>
+
+<!-- Another card for future expansion -->
+<a href="#" class="hub-card">
+<div class="icon"><i class="fas fa-users-gear"></i></div>
+<h2>Community</h2>
+<p>Connect with other creators, share your builds, and collaborate on projects.</p>
+</a>
+</div>
+</div>
+
+<div class="social-links">
+<a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="social-icon">
+<i class="fab fa-tiktok"></i>
+</a>
+<a href="https://discord.gg/PE4vGcZ3vY" class="social-icon">
+<i class="fab fa-discord"></i>
+</a>
+</div>
+
+<script>
+const pageTransition = document.getElementById("pageTransition");
+const animatedDots = document.getElementById("animatedDots");
+
+// Create animated background dots
+for (let i = 0; i < 50; i++) {
+  const dot = document.createElement("div");
+  dot.className = "dot";
+  dot.style.left = `${Math.random() * 100}%`;
+  dot.style.top = `${Math.random() * 100}%`;
+  dot.style.animationDelay = `${Math.random() * 15}s`;
+  dot.style.width = `${Math.random() * 6 + 2}px`;
+  dot.style.height = dot.style.width;
+  animatedDots.appendChild(dot);
+}
+
+// Page transition on load
+window.addEventListener("load", () => {
+  pageTransition.classList.add("animate-in");
+  
+  // Remove transition element after animation completes
+  setTimeout(() => {
+    pageTransition.style.display = "none";
+  }, 600);
+});
+
+// Page transition on navigation
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    pageTransition.style.display = "block";
+    pageTransition.classList.remove("animate-in");
+    void pageTransition.offsetWidth; // Trigger reflow
+    pageTransition.classList.add("animate-out");
+    
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 600);
+  });
+});
+
+// Add subtle hover effect to cards
+document.querySelectorAll(".hub-card").forEach(card => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const angleY = (x - centerX) * 0.008;
+    const angleX = (centerY - y) * 0.008;
+    
+    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+  });
+  
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateZ(0)";
+  });
+});
+</script>
+
+</body>
+  </html>
