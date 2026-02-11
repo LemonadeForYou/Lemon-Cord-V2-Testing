@@ -1,595 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lemon Cord | Minecraft Customization</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemon Cord · CYBER YELLOW</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-:root {
-  --bg-primary: #0F0F15;
-  --bg-card: #1A1A24;
-  --yellow-primary: #FFD95C;
-  --yellow-secondary: #FFE588;
-  --yellow-subtle: rgba(255, 217, 92, 0.1);
-  --text-primary: #FFFFFF;
-  --text-secondary: #B0B0C0;
-  --border-light: rgba(255, 217, 92, 0.15);
-  --border-medium: rgba(255, 217, 92, 0.25);
-  --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.2);
-  --transition-smooth: all 0.3s ease;
-}
+  <!-- Sci-Fi Yellow Futuristic UI -->
+  <style>
+    /* ===== FUTURISTIC SCI-FI YELLOW ===== */
+    :root {
+      --black-hole: #03050A;
+      --void: #0A0C14;
+      --carbon: #12141E;
+      --panel: #1A1E2A;
+      --neon-yellow: #FFEE32;
+      --neon-yellow-dim: rgba(255, 238, 50, 0.6);
+      --neon-glow: 0 0 12px rgba(255, 238, 50, 0.7);
+      --neon-glow-strong: 0 0 25px rgba(255, 238, 50, 0.9), 0 0 45px rgba(255, 238, 50, 0.3);
+      --grid-color: rgba(255, 238, 50, 0.08);
+      --text-lumen: #FFFFFF;
+      --text-soft: #C7C9D1;
+      --border-neon: 1px solid rgba(255, 238, 50, 0.25);
+      --border-neon-strong: 1px solid rgba(255, 238, 50, 0.7);
+      --shadow-tech: 0 15px 35px rgba(0,0,0,0.6);
+      --scanline: rgba(0, 0, 0, 0.25);
+      --transition-warp: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  line-height: 1.6;
-  font-weight: 400;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black-hole);
+      color: var(--text-lumen);
+      line-height: 1.6;
+      font-weight: 400;
+      position: relative;
+      min-height: 100vh;
+      background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 35px 35px;
+      background-position: center center;
+    }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+    /* CYBER GRID OVERLAY */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, 
+        rgba(0,0,0,0.4) 0px, 
+        transparent 1px,
+        transparent 3px,
+        rgba(0,0,0,0.4) 5px);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.3;
+    }
 
-/* Header & Navigation */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(15, 15, 21, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
-  z-index: 1000;
-  padding: 20px 0;
-}
+    .container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 30px;
+      position: relative;
+      z-index: 20;
+    }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    /* ===== GLOWING HEADER / NEON ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(3, 5, 10, 0.85);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: var(--border-neon);
+      box-shadow: 0 5px 25px rgba(255, 238, 50, 0.15);
+      z-index: 1000;
+      padding: 18px 0;
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.logo-icon {
-  font-size: 1.8rem;
-  color: var(--yellow-primary);
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      position: relative;
+    }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
+    .logo-icon {
+      font-size: 2.2rem;
+      color: var(--neon-yellow);
+      filter: drop-shadow(0 0 8px #FFEE32);
+      text-shadow: 0 0 12px #FFEE32;
+      transition: var(--transition-warp);
+    }
 
-.logo-main {
-  color: var(--text-primary);
-}
+    .logo:hover .logo-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
 
-.logo-accent {
-  color: var(--yellow-primary);
-}
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
 
-.nav-links {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
+    .logo-main {
+      color: white;
+      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }
 
-.nav-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: var(--transition-smooth);
-  position: relative;
-  padding: 5px 0;
-}
+    .logo-accent {
+      color: var(--neon-yellow);
+      text-shadow: 0 0 12px #FFEE32, 0 0 30px rgba(255,238,50,0.5);
+      font-weight: 800;
+    }
 
-.nav-link:hover {
-  color: var(--yellow-primary);
-}
+    /* ===== HOLOGRAPHIC NAV LINKS ===== */
+    .nav-links {
+      display: flex;
+      gap: 45px;
+      align-items: center;
+    }
 
-.nav-link.active {
-  color: var(--yellow-primary);
-}
+    .nav-link {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: var(--transition-warp);
+      position: relative;
+      padding: 5px 0;
+    }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--yellow-primary);
-  border-radius: 1px;
-}
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--neon-yellow);
+      box-shadow: 0 0 10px #FFEE32, 0 0 20px #FFEE32;
+      transition: width 0.25s ease;
+    }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+    .nav-link:hover {
+      color: white;
+      text-shadow: 0 0 8px #FFEE32;
+    }
 
-.social-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: var(--transition-smooth);
-}
+    .nav-link:hover::before {
+      width: 100%;
+    }
 
-.social-link:hover {
-  color: var(--yellow-primary);
-}
+    .nav-link.active {
+      color: white;
+      text-shadow: 0 0 10px #FFEE32;
+    }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--neon-yellow);
+      box-shadow: 0 0 10px #FFEE32, 0 0 25px #FFEE32;
+    }
 
-.menu-toggle:hover {
-  color: var(--yellow-primary);
-}
+    /* ===== SOCIAL LINKS / NEON PULSE ===== */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
-/* Main Content */
-.main-content {
-  padding-top: 120px;
-  padding-bottom: 80px;
-}
+    .social-link {
+      color: var(--neon-yellow-dim);
+      font-size: 1.4rem;
+      transition: var(--transition-warp);
+      position: relative;
+      display: flex;
+      text-shadow: 0 0 5px rgba(255,238,50,0.3);
+    }
 
-.hero-section {
-  text-align: center;
-  margin-bottom: 70px;
-}
+    .social-link:hover {
+      color: var(--neon-yellow);
+      transform: scale(1.25) translateY(-3px);
+      text-shadow: 0 0 25px #FFEE32, 0 0 40px #FFEE32;
+    }
 
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-  color: var(--text-primary);
-}
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--neon-yellow);
+      font-size: 1.8rem;
+      cursor: pointer;
+      filter: drop-shadow(0 0 8px yellow);
+    }
 
-.hero-subtitle {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 40px;
-}
+    /* ===== MAIN CONTENT : SCI-FI CARDS ===== */
+    .main-content {
+      padding-top: 150px;
+      padding-bottom: 100px;
+    }
 
-/* Feature Cards */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 60px;
-}
+    .hero-section {
+      text-align: center;
+      margin-bottom: 80px;
+    }
 
-.feature-card {
-  background-color: var(--bg-card);
-  border-radius: 16px;
-  padding: 40px 30px;
-  border: 1px solid var(--border-light);
-  transition: var(--transition-smooth);
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-}
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 0 0 12px rgba(255,238,50,0.6), 0 0 40px rgba(255,238,50,0.3);
+      animation: flicker 4s infinite;
+    }
 
-.feature-card:hover {
-  border-color: var(--border-medium);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-subtle);
-}
+    .hero-subtitle {
+      color: var(--text-soft);
+      font-size: 1.35rem;
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(10,12,20,0.7);
+      backdrop-filter: blur(10px);
+      border: var(--border-neon);
+      padding: 18px 40px;
+      border-radius: 60px;
+      box-shadow: 0 0 25px rgba(255,238,50,0.2);
+      letter-spacing: 1.5px;
+      font-weight: 300;
+    }
 
-.feature-card.active {
-  border-color: var(--yellow-primary);
-}
+    /* ===== HEX GRID / FUTURISTIC FEATURE CARDS ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+      margin-top: 50px;
+    }
 
-.feature-icon {
-  font-size: 2.5rem;
-  color: var(--yellow-primary);
-  margin-bottom: 25px;
-}
+    .feature-card {
+      background: rgba(20, 24, 36, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 238, 50, 0.15);
+      border-radius: 24px;
+      padding: 45px 30px;
+      transition: var(--transition-warp);
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
 
-.feature-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: var(--text-primary);
-}
+    /* Sci-fi corner glows */
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 20px;
+      height: 20px;
+      border-top: 3px solid var(--neon-yellow);
+      border-left: 3px solid var(--neon-yellow);
+      border-radius: 12px 0 0 0;
+      box-shadow: 0 0 15px #FFEE32;
+      opacity: 0.5;
+    }
 
-.feature-description {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
-}
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 20px;
+      height: 20px;
+      border-bottom: 3px solid var(--neon-yellow);
+      border-right: 3px solid var(--neon-yellow);
+      border-radius: 0 0 12px 0;
+      box-shadow: 0 0 15px #FFEE32;
+      opacity: 0.5;
+    }
 
-/* Footer */
-.footer {
-  border-top: 1px solid var(--border-light);
-  padding: 40px 0;
-  margin-top: 60px;
-}
+    .feature-card:hover {
+      border: 1px solid rgba(255, 238, 50, 0.7);
+      box-shadow: 0 0 30px rgba(255,238,50,0.3), 0 10px 40px black;
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(26, 32, 46, 0.9);
+    }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .feature-card:hover::before,
+    .feature-card:hover::after {
+      opacity: 1;
+      box-shadow: 0 0 25px #FFEE32;
+    }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
+    .feature-card.active {
+      border: 1px solid var(--neon-yellow);
+      box-shadow: 0 0 40px rgba(255,238,50,0.4), inset 0 0 15px rgba(255,238,50,0.1);
+    }
 
-.footer-logo-text {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
+    .feature-icon {
+      font-size: 2.9rem;
+      color: var(--neon-yellow);
+      margin-bottom: 25px;
+      text-shadow: 0 0 25px #FFEE32, 0 0 45px #FFEE32;
+      transition: var(--transition-warp);
+    }
 
-.footer-logo-main {
-  color: var(--text-primary);
-}
+    .feature-card:hover .feature-icon {
+      transform: scale(1.15);
+      text-shadow: 0 0 40px #FFEE32, 0 0 80px #FFEE32;
+    }
 
-.footer-logo-accent {
-  color: var(--yellow-primary);
-}
+    .feature-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: white;
+      letter-spacing: -0.5px;
+      text-shadow: 0 0 6px rgba(255,255,255,0.5);
+    }
 
-.footer-text {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
+    .feature-description {
+      color: #B6B9C7;
+      font-size: 1rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
 
-.footer-social {
-  display: flex;
-  gap: 15px;
-}
+    /* ===== HOLOGRAPHIC FOOTER ===== */
+    .footer {
+      border-top: 1px solid rgba(255, 238, 50, 0.25);
+      padding: 50px 0;
+      margin-top: 70px;
+      background: rgba(3,5,10,0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.7);
+    }
 
-.footer-social-link {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: var(--transition-smooth);
-}
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.footer-social-link:hover {
-  color: var(--yellow-primary);
-  border-color: var(--border-medium);
-}
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
 
-/* Page Transition */
-.page-transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--yellow-primary);
-  z-index: 9999;
-  pointer-events: none;
-  transform: scaleY(0);
-  transform-origin: bottom;
-}
+    .footer-logo-main {
+      color: white;
+    }
 
-.page-transition.animate-in {
-  animation: slideIn 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
+    .footer-logo-accent {
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px #FFEE32;
+    }
 
-.page-transition.animate-out {
-  animation: slideOut 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-  transform-origin: top;
-}
+    .footer-text {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-@keyframes slideIn {
-  from { transform: scaleY(1); }
-  to { transform: scaleY(0); }
-}
+    .footer-social {
+      display: flex;
+      gap: 18px;
+    }
 
-@keyframes slideOut {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1); }
-}
+    .footer-social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,238,50,0.05);
+      border: 1px solid rgba(255,238,50,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-yellow);
+      text-decoration: none;
+      font-size: 1.3rem;
+      transition: var(--transition-warp);
+      box-shadow: 0 0 10px rgba(255,238,50,0.1);
+    }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-}
+    .footer-social-link:hover {
+      background: rgba(255,238,50,0.15);
+      border-color: var(--neon-yellow);
+      color: white;
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 0 28px #FFEE32;
+    }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  
-  .nav-links {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background-color: var(--bg-card);
-    flex-direction: column;
-    padding: 30px 20px;
-    gap: 25px;
-    border-bottom: 1px solid var(--border-light);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition-smooth);
-  }
-  
-  .nav-links.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    gap: 30px;
-    text-align: center;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem;
-  }
-}
+    /* ===== PAGE TRANSITION: WARP CORE ===== */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #FFEE32;
+      box-shadow: 0 0 100px #FFEE32, inset 0 0 50px rgba(0,0,0,0.8);
+      z-index: 9999;
+      pointer-events: none;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      opacity: 0.95;
+    }
 
-@media (max-width: 576px) {
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-}
-</style>
+    .page-transition.animate-in {
+      animation: warpIn 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .page-transition.animate-out {
+      animation: warpOut 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+      transform-origin: top;
+    }
+
+    @keyframes warpIn {
+      0% { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(0); opacity: 0; }
+    }
+
+    @keyframes warpOut {
+      0% { transform: scaleY(0); opacity: 0; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 12px rgba(255,238,50,0.6), 0 0 40px rgba(255,238,50,0.3); }
+      20%, 24%, 55% { text-shadow: 0 0 2px rgba(255,238,50,0.2), 0 0 12px rgba(255,238,50,0.1); }
+    }
+
+    /* ===== RESPONSIVE / FUTURISTIC MOBILE ===== */
+    @media (max-width: 992px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        background: rgba(3,5,10,0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+        border-bottom: 2px solid rgba(255,238,50,0.5);
+        border-top: 1px solid rgba(255,238,50,0.3);
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 30px 40px rgba(0,0,0,0.7);
+      }
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .hero-title { font-size: 2.5rem; }
+      .hero-subtitle { font-size: 1.1rem; padding: 15px 25px; }
+      .footer-content { flex-direction: column; gap: 30px; }
+    }
+
+    @media (max-width: 576px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2rem; }
+      .container { padding: 0 20px; }
+      .feature-card { padding: 35px 20px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="page-transition" id="pageTransition"></div>
+  <!-- WARP TRANSITION OVERLAY -->
+  <div class="page-transition" id="pageTransition"></div>
 
-<!-- Header & Navigation -->
-<header class="header">
-  <div class="container">
-    <nav class="navbar">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-cube"></i>
-        </div>
-        <div class="logo-text">
-          <span class="logo-main">Lemon</span>
-          <span class="logo-accent">Cord</span>
-        </div>
-      </a>
-      
-      <button class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="totem-maker.html" class="nav-link">Totem Creator</a>
-        <a href="#" class="nav-link">Tools</a>
-        <a href="#" class="nav-link">Resources</a>
-        <a href="#" class="nav-link">Community</a>
+  <!-- CYBER HEADER -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">Lemon</span>
+            <span class="logo-accent">Cord</span>
+          </div>
+        </a>
         
-        <div class="nav-actions">
-          <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="social-link">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bolt"></i> <!-- sci-fi toggle icon -->
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="totem-maker.html" class="nav-link">Totem Creator</a>
+          <a href="#" class="nav-link">Tools</a>
+          <a href="#" class="nav-link">Resources</a>
+          <a href="#" class="nav-link">Community</a>
+          
+          <div class="nav-actions">
+            <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="social-link">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://discord.gg/PE4vGcZ3vY" target="_blank" class="social-link">
+              <i class="fab fa-discord"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN - FUTURISTIC TOOLS -->
+  <main class="main-content">
+    <div class="container">
+      <section class="hero-section">
+        <h1 class="hero-title">/MINECRAFT_OVERDRIVE</h1>
+        <p class="hero-subtitle">
+          <i class="fas fa-bolt" style="margin-right: 10px; color: #FFEE32;"></i>
+          ANIMATED TOTEMS · QUANTUM TEXTURES · CYBER PACKS
+        </p>
+      </section>
+
+      <!-- SCI-FI FEATURE CARDS - YELLOW/NEON -->
+      <section class="features-grid">
+        <a href="totem-maker.html" class="feature-card active">
+          <div class="feature-icon">
+            <i class="fas fa-wand-magic-sparkles"></i>
+          </div>
+          <h3 class="feature-title">TOTEM_WARP</h3>
+          <p class="feature-description">
+            Convert GIFs → animated totems with quantum encoding. Real-time preview.
+          </p>
+          <span style="position: absolute; bottom: 15px; right: 25px; color: #FFEE32; opacity: 0.7; font-size: 0.8rem; letter-spacing: 2px;">[ ACTIVE ]</span>
+        </a>
+        
+        <a href="#" class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3 class="feature-title">TEXTURE_SYNTH</h3>
+          <p class="feature-description">
+            Holographic texture composer. 16x to 512x, PBR, emissive layers.
+          </p>
+        </a>
+        
+        <a href="#" class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-cubes"></i>
+          </div>
+          <h3 class="feature-title">VOXEL_FORGE</h3>
+          <p class="feature-description">
+            3D model builder with real-time lighting & custom animations.
+          </p>
+        </a>
+        
+        <a href="#" class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="feature-title">DATAPACK_OS</h3>
+          <p class="feature-description">
+            Visual scripting for predicates, loot tables, and custom commands.
+          </p>
+        </a>
+        
+        <a href="#" class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-download"></i>
+          </div>
+          <h3 class="feature-title">NEXUS_HUB</h3>
+          <p class="feature-description">
+            Community resource vault: 3000+ futuristic templates & shaders.
+          </p>
+        </a>
+        
+        <a href="#" class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="feature-title">CYBER_COLLECTIVE</h3>
+          <p class="feature-description">
+            Link with creators, share encrypted projects, collab in realtime.
+          </p>
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- NEO FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+          <i class="fas fa-cube" style="color: #FFEE32; font-size: 1.8rem; filter: drop-shadow(0 0 8px #FFEE32);"></i>
+          <span class="footer-logo-text">
+            <span class="footer-logo-main">Lemon</span>
+            <span class="footer-logo-accent">Cord</span>
+          </span>
+        </a>
+        
+        <p class="footer-text">© 3023 LEMON CORD · QUANTUM EDITION</p>
+        
+        <div class="footer-social">
+          <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="footer-social-link">
             <i class="fab fa-tiktok"></i>
           </a>
-          <a href="https://discord.gg/PE4vGcZ3vY" target="_blank" class="social-link">
+          <a href="https://discord.gg/PE4vGcZ3vY" target="_blank" class="footer-social-link">
             <i class="fab fa-discord"></i>
           </a>
         </div>
       </div>
-    </nav>
-  </div>
-</header>
-
-<!-- Main Content -->
-<main class="main-content">
-  <div class="container">
-    <section class="hero-section">
-      <h1 class="hero-title">Minecraft Customization Tools</h1>
-      <p class="hero-subtitle">
-        Professional tools for creating custom Minecraft content. Transform your ideas into in-game reality.
-      </p>
-    </section>
-    
-    <section class="features-grid">
-      <a href="totem-maker.html" class="feature-card active nav-link">
-        <div class="feature-icon">
-          <i class="fas fa-wand-magic-sparkles"></i>
-        </div>
-        <h3 class="feature-title">Totem Creator</h3>
-        <p class="feature-description">
-          Convert any GIF into animated Minecraft totems with our advanced creation tool.
-        </p>
-      </a>
-      
-      <a href="#" class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-palette"></i>
-        </div>
-        <h3 class="feature-title">Texture Studio</h3>
-        <p class="feature-description">
-          Create and customize texture packs with our intuitive studio interface.
-        </p>
-      </a>
-      
-      <a href="#" class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-cubes"></i>
-        </div>
-        <h3 class="feature-title">Model Builder</h3>
-        <p class="feature-description">
-          Design custom 3D models and items for your Minecraft world.
-        </p>
-      </a>
-      
-      <a href="#" class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <h3 class="feature-title">Script Generator</h3>
-        <p class="feature-description">
-          Generate datapacks and scripts with visual programming tools.
-        </p>
-      </a>
-      
-      <a href="#" class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-download"></i>
-        </div>
-        <h3 class="feature-title">Resource Hub</h3>
-        <p class="feature-description">
-          Access a library of community-created resources and templates.
-        </p>
-      </a>
-      
-      <a href="#" class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-users"></i>
-        </div>
-        <h3 class="feature-title">Community</h3>
-        <p class="feature-description">
-          Connect with other creators, share projects, and get inspiration.
-        </p>
-      </a>
-    </section>
-  </div>
-</main>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <a href="index.html" class="footer-logo">
-        <div class="footer-logo-text">
-          <span class="footer-logo-main">Lemon</span>
-          <span class="footer-logo-accent">Cord</span>
-        </div>
-      </a>
-      
-      <p class="footer-text">© 2023 Lemon Cord. All rights reserved.</p>
-      
-      <div class="footer-social">
-        <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="footer-social-link">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://discord.gg/PE4vGcZ3vY" target="_blank" class="footer-social-link">
-          <i class="fab fa-discord"></i>
-        </a>
-      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-const pageTransition = document.getElementById("pageTransition");
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+  <!-- HYPERSCRIPT : TRANSITIONS + MENU -->
+  <script>
+    (function() {
+      "use strict";
 
-// Page transition on load
-window.addEventListener("load", () => {
-  pageTransition.classList.add("animate-in");
-  
-  setTimeout(() => {
-    pageTransition.style.display = "none";
-  }, 500);
-});
+      const pageTransition = document.getElementById("pageTransition");
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
 
-// Page transition on navigation
-document.querySelectorAll(".nav-link").forEach(link => {
-  link.addEventListener("click", e => {
-    if (link.getAttribute("href") === "#") return;
-    
-    e.preventDefault();
-    pageTransition.style.display = "block";
-    pageTransition.classList.remove("animate-in");
-    
-    // Close mobile menu if open
-    navLinks.classList.remove("active");
-    
-    // Trigger reflow
-    void pageTransition.offsetWidth;
-    
-    pageTransition.classList.add("animate-out");
-    
-    setTimeout(() => {
-      window.location.href = link.href;
-    }, 500);
-  });
-});
+      // PAGE LOAD WARP
+      window.addEventListener("load", function() {
+        pageTransition.classList.add("animate-in");
+        setTimeout(() => {
+          pageTransition.style.display = "none";
+        }, 550);
+      });
 
-// Mobile menu toggle
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+      // SCI-FI PAGE TRANSITION ON CLICK (excluding # links)
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", function(e) {
+          const href = this.getAttribute("href");
+          if (!href || href === "#") return;
 
-// Close mobile menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-    navLinks.classList.remove("active");
-  }
-});
+          e.preventDefault();
+          pageTransition.style.display = "block";
+          pageTransition.classList.remove("animate-in", "animate-out");
+          // force reflow
+          void pageTransition.offsetWidth;
+          pageTransition.classList.add("animate-out");
 
-// Close mobile menu on window resize
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    navLinks.classList.remove("active");
-  }
-});
-</script>
+          // close mobile menu if open
+          navLinks.classList.remove("active");
 
+          setTimeout(() => {
+            window.location.href = href;
+          }, 550);
+        });
+      });
+
+      // MOBILE MENU TOGGLE (neon style)
+      if (menuToggle) {
+        menuToggle.addEventListener("click", function() {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // CLOSE MOBILE MENU WHEN CLICK OUTSIDE
+      document.addEventListener("click", function(e) {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+          navLinks.classList.remove("active");
+        }
+      });
+
+      // RESIZE HANDLER
+      window.addEventListener("resize", function() {
+        if (window.innerWidth > 768) {
+          navLinks.classList.remove("active");
+        }
+      });
+
+      // add flicker to hero title (already animated via css)
+    })();
+  </script>
+
+  <!-- subtle sci-fi sound? no, just visual -->
 </body>
 </html>
