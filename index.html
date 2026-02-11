@@ -94,7 +94,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 30px; /* Reduced from 40px */
   align-items: center;
 }
 
@@ -102,10 +102,11 @@ body {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.95rem; /* Slightly smaller */
   transition: var(--transition-smooth);
   position: relative;
   padding: 5px 0;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .nav-link:hover {
@@ -130,13 +131,13 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px; /* Reduced from 20px */
 }
 
 .social-link {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Slightly smaller */
   transition: var(--transition-smooth);
 }
 
@@ -160,42 +161,43 @@ body {
 
 /* Main Content */
 .main-content {
-  padding-top: 120px;
+  padding-top: 100px; /* Reduced from 120px */
   padding-bottom: 80px;
 }
 
 .hero-section {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 60px; /* Reduced from 70px */
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.8rem; /* Reduced from 3rem */
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Reduced from 20px */
   letter-spacing: -1px;
   color: var(--text-primary);
 }
 
 .hero-subtitle {
   color: var(--text-secondary);
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Reduced from 1.2rem */
   max-width: 600px;
-  margin: 0 auto 40px;
+  margin: 0 auto 30px; /* Reduced from 40px */
+  line-height: 1.5;
 }
 
 /* Feature Cards */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 60px;
+  gap: 25px; /* Reduced from 30px */
+  margin-bottom: 50px; /* Reduced from 60px */
 }
 
 .feature-card {
   background-color: var(--bg-card);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 35px 25px; /* Reduced from 40px 30px */
   border: 1px solid var(--border-light);
   transition: var(--transition-smooth);
   text-align: center;
@@ -214,29 +216,29 @@ body {
 }
 
 .feature-icon {
-  font-size: 2.5rem;
+  font-size: 2.2rem; /* Reduced from 2.5rem */
   color: var(--yellow-primary);
-  margin-bottom: 25px;
+  margin-bottom: 20px; /* Reduced from 25px */
 }
 
 .feature-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem; /* Reduced from 1.5rem */
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 12px; /* Reduced from 15px */
   color: var(--text-primary);
 }
 
 .feature-description {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.95rem; /* Reduced from 1rem */
+  line-height: 1.6;
 }
 
 /* Footer */
 .footer {
   border-top: 1px solid var(--border-light);
-  padding: 40px 0;
-  margin-top: 60px;
+  padding: 30px 0; /* Reduced from 40px 0 */
+  margin-top: 50px; /* Reduced from 60px */
 }
 
 .footer-content {
@@ -248,12 +250,12 @@ body {
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px; /* Reduced from 10px */
   text-decoration: none;
 }
 
 .footer-logo-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Reduced from 1.2rem */
   font-weight: 600;
 }
 
@@ -267,17 +269,17 @@ body {
 
 .footer-text {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* Reduced from 0.9rem */
 }
 
 .footer-social {
   display: flex;
-  gap: 15px;
+  gap: 12px; /* Reduced from 15px */
 }
 
 .footer-social-link {
-  width: 40px;
-  height: 40px;
+  width: 36px; /* Reduced from 40px */
+  height: 36px;
   border-radius: 50%;
   background-color: var(--bg-card);
   border: 1px solid var(--border-light);
@@ -286,7 +288,7 @@ body {
   justify-content: center;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Reduced from 1.1rem */
   transition: var(--transition-smooth);
 }
 
@@ -329,13 +331,38 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 1100px) {
+  .nav-links {
+    gap: 20px; /* Even smaller on medium screens */
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 992px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 850px) {
+  .nav-links {
+    gap: 12px;
+  }
+  
+  .nav-link {
+    font-size: 0.85rem;
   }
 }
 
@@ -351,8 +378,8 @@ body {
     width: 100%;
     background-color: var(--bg-card);
     flex-direction: column;
-    padding: 30px 20px;
-    gap: 25px;
+    padding: 20px;
+    gap: 20px;
     border-bottom: 1px solid var(--border-light);
     transform: translateY(-100%);
     opacity: 0;
@@ -368,18 +395,8 @@ body {
   
   .footer-content {
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
     text-align: center;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .features-grid {
-    grid-template-columns: 1fr;
   }
   
   .hero-title {
@@ -387,7 +404,30 @@ body {
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 1rem; /* Reset to normal size for mobile menu */
+  }
+}
+
+@media (max-width: 576px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .feature-card {
+    padding: 30px 20px;
   }
 }
 </style>
@@ -520,7 +560,8 @@ body {
         </div>
       </a>
       
-      <p class="footer-text">© 2023 Lemon Cord. All rights reserved.</p>
+      <!-- UPDATED: Changed from 2023 to 2026 -->
+      <p class="footer-text">© 2026 Lemon Cord. All rights reserved.</p>
       
       <div class="footer-social">
         <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="footer-social-link">
