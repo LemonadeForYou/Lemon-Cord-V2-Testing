@@ -12,24 +12,17 @@
 
 <style>
 :root {
-  /* Holographic Yellow Theme */
-  --bg-primary: #0A0A0F;
-  --bg-secondary: #111118;
-  --bg-card: #14141F;
-  --yellow-primary: #FFEE5C;
-  --yellow-secondary: #FFF388;
-  --yellow-glow: rgba(255, 238, 92, 0.4);
-  --hologram-blue: #5CE1FF;
-  --hologram-purple: #C85CFF;
+  --bg-primary: #0F0F15;
+  --bg-card: #1A1A24;
+  --yellow-primary: #FFD95C;
+  --yellow-secondary: #FFE588;
+  --yellow-subtle: rgba(255, 217, 92, 0.1);
   --text-primary: #FFFFFF;
-  --text-secondary: #D0D0E0;
-  --border-light: rgba(255, 238, 92, 0.2);
-  --border-medium: rgba(255, 238, 92, 0.3);
-  --border-glow: rgba(255, 238, 92, 0.5);
-  --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.3);
-  --shadow-hologram: 0 0 20px rgba(255, 238, 92, 0.3);
+  --text-secondary: #B0B0C0;
+  --border-light: rgba(255, 217, 92, 0.15);
+  --border-medium: rgba(255, 217, 92, 0.25);
+  --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.2);
   --transition-smooth: all 0.3s ease;
-  --gradient-hologram: linear-gradient(135deg, var(--yellow-primary) 0%, var(--hologram-blue) 50%, var(--hologram-purple) 100%);
 }
 
 * {
@@ -45,23 +38,6 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   font-weight: 400;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* Holographic background effect */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 238, 92, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(92, 225, 255, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(200, 92, 255, 0.05) 0%, transparent 50%);
-  z-index: -1;
 }
 
 .container {
@@ -77,11 +53,11 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(10, 10, 15, 0.9);
+  background-color: rgba(15, 15, 21, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-light);
   z-index: 1000;
-  padding: 18px 0;
+  padding: 20px 0;
 }
 
 .navbar {
@@ -93,30 +69,13 @@ body::before {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
-  position: relative;
-}
-
-.logo::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient-hologram);
-  border-radius: 2px;
-  opacity: 0.8;
 }
 
 .logo-icon {
   font-size: 1.8rem;
-  background: var(--gradient-hologram);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 8px var(--yellow-glow));
+  color: var(--yellow-primary);
 }
 
 .logo-text {
@@ -130,11 +89,7 @@ body::before {
 }
 
 .logo-accent {
-  background: var(--gradient-hologram);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
+  color: var(--yellow-primary);
 }
 
 .nav-links {
@@ -155,12 +110,10 @@ body::before {
 
 .nav-link:hover {
   color: var(--yellow-primary);
-  text-shadow: 0 0 8px var(--yellow-glow);
 }
 
 .nav-link.active {
   color: var(--yellow-primary);
-  font-weight: 600;
 }
 
 .nav-link.active::after {
@@ -170,9 +123,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--gradient-hologram);
-  border-radius: 2px;
-  box-shadow: 0 0 8px var(--yellow-glow);
+  background-color: var(--yellow-primary);
+  border-radius: 1px;
 }
 
 .nav-actions {
@@ -190,8 +142,6 @@ body::before {
 
 .social-link:hover {
   color: var(--yellow-primary);
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 6px var(--yellow-glow));
 }
 
 .menu-toggle {
@@ -216,38 +166,22 @@ body::before {
 
 .hero-section {
   text-align: center;
-  margin-bottom: 80px;
-  position: relative;
+  margin-bottom: 70px;
 }
 
 .hero-title {
-  font-size: 3.2rem;
-  font-weight: 800;
+  font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: -1px;
   color: var(--text-primary);
-  position: relative;
-  display: inline-block;
-}
-
-.hero-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 25%;
-  width: 50%;
-  height: 4px;
-  background: var(--gradient-hologram);
-  border-radius: 4px;
-  box-shadow: 0 0 15px var(--yellow-glow);
 }
 
 .hero-subtitle {
   color: var(--text-secondary);
   font-size: 1.2rem;
-  max-width: 700px;
-  margin: 40px auto 50px;
-  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 40px;
 }
 
 /* Feature Cards */
@@ -267,102 +201,35 @@ body::before {
   text-align: center;
   text-decoration: none;
   color: inherit;
-  position: relative;
-  overflow: hidden;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 238, 92, 0.1), transparent);
-  transition: var(--transition-smooth);
-  z-index: 1;
 }
 
 .feature-card:hover {
-  border-color: var(--border-glow);
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-subtle), var(--shadow-hologram);
-}
-
-.feature-card:hover::before {
-  left: 100%;
+  border-color: var(--border-medium);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-subtle);
 }
 
 .feature-card.active {
-  border-color: var(--border-glow);
-  box-shadow: 0 0 20px rgba(255, 238, 92, 0.2);
-}
-
-.feature-card.active::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: var(--gradient-hologram);
-  border-radius: 18px;
-  z-index: -1;
-  animation: hologramBorder 3s infinite linear;
+  border-color: var(--yellow-primary);
 }
 
 .feature-icon {
-  font-size: 2.8rem;
-  margin-bottom: 25px;
-  position: relative;
-  z-index: 2;
-}
-
-.feature-card:nth-child(1) .feature-icon {
-  background: var(--gradient-hologram);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.feature-card:nth-child(2) .feature-icon {
+  font-size: 2.5rem;
   color: var(--yellow-primary);
-}
-
-.feature-card:nth-child(3) .feature-icon {
-  color: var(--hologram-blue);
-}
-
-.feature-card:nth-child(4) .feature-icon {
-  color: var(--yellow-secondary);
-}
-
-.feature-card:nth-child(5) .feature-icon {
-  color: var(--hologram-purple);
-}
-
-.feature-card:nth-child(6) .feature-icon {
-  background: var(--gradient-hologram);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 25px;
 }
 
 .feature-title {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 15px;
   color: var(--text-primary);
-  position: relative;
-  z-index: 2;
 }
 
 .feature-description {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.7;
-  position: relative;
-  z-index: 2;
 }
 
 /* Footer */
@@ -370,19 +237,6 @@ body::before {
   border-top: 1px solid var(--border-light);
   padding: 40px 0;
   margin-top: 60px;
-  position: relative;
-  background-color: var(--bg-secondary);
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--gradient-hologram);
-  opacity: 0.5;
 }
 
 .footer-content {
@@ -396,23 +250,11 @@ body::before {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  position: relative;
-}
-
-.footer-logo::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient-hologram);
-  border-radius: 2px;
 }
 
 .footer-logo-text {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .footer-logo-main {
@@ -420,10 +262,7 @@ body::before {
 }
 
 .footer-logo-accent {
-  background: var(--gradient-hologram);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--yellow-primary);
 }
 
 .footer-text {
@@ -437,8 +276,8 @@ body::before {
 }
 
 .footer-social-link {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: var(--bg-card);
   border: 1px solid var(--border-light);
@@ -449,30 +288,11 @@ body::before {
   text-decoration: none;
   font-size: 1.1rem;
   transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
-}
-
-.footer-social-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 238, 92, 0.2), transparent);
-  transition: var(--transition-smooth);
 }
 
 .footer-social-link:hover {
   color: var(--yellow-primary);
-  border-color: var(--border-glow);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 238, 92, 0.2);
-}
-
-.footer-social-link:hover::before {
-  left: 100%;
+  border-color: var(--border-medium);
 }
 
 /* Page Transition */
@@ -482,7 +302,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--gradient-hologram);
+  background-color: var(--yellow-primary);
   z-index: 9999;
   pointer-events: none;
   transform: scaleY(0);
@@ -508,12 +328,6 @@ body::before {
   to { transform: scaleY(1); }
 }
 
-@keyframes hologramBorder {
-  0% { opacity: 0.8; }
-  50% { opacity: 0.4; }
-  100% { opacity: 0.8; }
-}
-
 /* Responsive */
 @media (max-width: 992px) {
   .features-grid {
@@ -521,7 +335,7 @@ body::before {
   }
   
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -535,8 +349,7 @@ body::before {
     top: 80px;
     left: 0;
     width: 100%;
-    background-color: rgba(20, 20, 31, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: var(--bg-card);
     flex-direction: column;
     padding: 30px 20px;
     gap: 25px;
@@ -545,7 +358,6 @@ body::before {
     opacity: 0;
     visibility: hidden;
     transition: var(--transition-smooth);
-    z-index: 1000;
   }
   
   .nav-links.active {
@@ -561,11 +373,7 @@ body::before {
   }
   
   .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .nav-actions {
-    margin-top: 10px;
+    font-size: 2.2rem;
   }
 }
 
@@ -575,15 +383,11 @@ body::before {
   }
   
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   
   .hero-subtitle {
     font-size: 1.1rem;
-  }
-  
-  .feature-card {
-    padding: 30px 20px;
   }
 }
 </style>
@@ -637,7 +441,7 @@ body::before {
     <section class="hero-section">
       <h1 class="hero-title">Minecraft Customization Tools</h1>
       <p class="hero-subtitle">
-        Professional holographic tools for creating custom Minecraft content. Transform your ideas into in-game reality with our advanced suite of creation tools designed for the modern Minecraft enthusiast.
+        Professional tools for creating custom Minecraft content. Transform your ideas into in-game reality.
       </p>
     </section>
     
@@ -648,7 +452,7 @@ body::before {
         </div>
         <h3 class="feature-title">Totem Creator</h3>
         <p class="feature-description">
-          Convert any GIF into animated Minecraft totems with our advanced holographic creation tool. Supports custom animations and effects.
+          Convert any GIF into animated Minecraft totems with our advanced creation tool.
         </p>
       </a>
       
@@ -658,7 +462,7 @@ body::before {
         </div>
         <h3 class="feature-title">Texture Studio</h3>
         <p class="feature-description">
-          Create and customize texture packs with our intuitive studio interface featuring holographic previews.
+          Create and customize texture packs with our intuitive studio interface.
         </p>
       </a>
       
@@ -668,7 +472,7 @@ body::before {
         </div>
         <h3 class="feature-title">Model Builder</h3>
         <p class="feature-description">
-          Design custom 3D models and items for your Minecraft world with real-time holographic rendering.
+          Design custom 3D models and items for your Minecraft world.
         </p>
       </a>
       
@@ -678,7 +482,7 @@ body::before {
         </div>
         <h3 class="feature-title">Script Generator</h3>
         <p class="feature-description">
-          Generate datapacks and scripts with visual programming tools featuring holographic code visualization.
+          Generate datapacks and scripts with visual programming tools.
         </p>
       </a>
       
@@ -688,7 +492,7 @@ body::before {
         </div>
         <h3 class="feature-title">Resource Hub</h3>
         <p class="feature-description">
-          Access a library of community-created resources and templates with holographic preview capabilities.
+          Access a library of community-created resources and templates.
         </p>
       </a>
       
@@ -698,7 +502,7 @@ body::before {
         </div>
         <h3 class="feature-title">Community</h3>
         <p class="feature-description">
-          Connect with other creators, share projects, and get inspiration in our holographic community space.
+          Connect with other creators, share projects, and get inspiration.
         </p>
       </a>
     </section>
