@@ -47,7 +47,6 @@
       padding: 0 20px;
     }
 
-    /* Header & Navigation */
     .header {
       position: fixed;
       top: 0;
@@ -84,13 +83,8 @@
       letter-spacing: -0.5px;
     }
 
-    .logo-main {
-      color: var(--text-primary);
-    }
-
-    .logo-accent {
-      color: var(--yellow-primary);
-    }
+    .logo-main { color: var(--text-primary); }
+    .logo-accent { color: var(--yellow-primary); }
 
     .nav-links {
       display: flex;
@@ -108,13 +102,8 @@
       padding: 5px 0;
     }
 
-    .nav-link:hover {
-      color: var(--yellow-primary);
-    }
-
-    .nav-link.active {
-      color: var(--yellow-primary);
-    }
+    .nav-link:hover { color: var(--yellow-primary); }
+    .nav-link.active { color: var(--yellow-primary); }
 
     .nav-link.active::after {
       content: '';
@@ -140,9 +129,7 @@
       transition: var(--transition-smooth);
     }
 
-    .social-link:hover {
-      color: var(--yellow-primary);
-    }
+    .social-link:hover { color: var(--yellow-primary); }
 
     .menu-toggle {
       display: none;
@@ -154,14 +141,12 @@
       transition: var(--transition-smooth);
     }
 
-    .menu-toggle:hover {
-      color: var(--yellow-primary);
-    }
+    .menu-toggle:hover { color: var(--yellow-primary); }
 
-    /* Main Content */
+    /* UPDATED HERE */
     .main-content {
       padding-top: 120px;
-      padding-bottom: 80px;
+      padding-bottom: 0;
     }
 
     .hero-section {
@@ -174,7 +159,6 @@
       font-weight: 700;
       margin-bottom: 20px;
       letter-spacing: -1px;
-      color: var(--text-primary);
     }
 
     .hero-subtitle {
@@ -184,7 +168,6 @@
       margin: 0 auto 40px;
     }
 
-    /* Feature Cards – now only two items */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -224,7 +207,6 @@
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 15px;
-      color: var(--text-primary);
     }
 
     .feature-description {
@@ -233,7 +215,6 @@
       line-height: 1.7;
     }
 
-    /* Footer */
     .footer {
       border-top: 1px solid var(--border-light);
       padding: 40px 0;
@@ -244,26 +225,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .footer-logo-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .footer-logo-main {
-      color: var(--text-primary);
-    }
-
-    .footer-logo-accent {
-      color: var(--yellow-primary);
     }
 
     .footer-text {
@@ -296,255 +257,51 @@
       border-color: var(--border-medium);
     }
 
-    /* Page Transition */
-    .page-transition {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--yellow-primary);
-      z-index: 9999;
-      pointer-events: none;
-      transform: scaleY(0);
-      transform-origin: bottom;
-    }
-
-    .page-transition.animate-in {
-      animation: slideIn 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-    }
-
-    .page-transition.animate-out {
-      animation: slideOut 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-      transform-origin: top;
-    }
-
-    @keyframes slideIn {
-      from { transform: scaleY(1); }
-      to { transform: scaleY(0); }
-    }
-
-    @keyframes slideOut {
-      from { transform: scaleY(0); }
-      to { transform: scaleY(1); }
-    }
-
-    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-card);
-        flex-direction: column;
-        padding: 30px 20px;
-        gap: 25px;
-        border-bottom: 1px solid var(--border-light);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition-smooth);
-      }
-
-      .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-      }
-
-      .hero-title {
-        font-size: 2.2rem;
-      }
-
       .features-grid {
         grid-template-columns: 1fr;
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="page-transition" id="pageTransition"></div>
-
-<!-- Header & Navigation -->
 <header class="header">
   <div class="container">
     <nav class="navbar">
       <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-cube"></i>
-        </div>
+        <div class="logo-icon"><i class="fas fa-cube"></i></div>
         <div class="logo-text">
           <span class="logo-main">Lemon</span>
           <span class="logo-accent">Cord</span>
         </div>
       </a>
-
-      <button class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="totem-maker.html" class="nav-link">Totem Creator</a>
-        <a href="#" class="nav-link">Tools</a>
-        <a href="#" class="nav-link">Resources</a>
-        <a href="#" class="nav-link">Community</a>
-
-        <div class="nav-actions">
-          <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="social-link">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="https://discord.gg/PE4vGcZ3vY" target="_blank" class="social-link">
-            <i class="fab fa-discord"></i>
-          </a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
 
-<!-- Main Content -->
 <main class="main-content">
   <div class="container">
     <section class="hero-section">
       <h1 class="hero-title">Minecraft Customization Tools</h1>
       <p class="hero-subtitle">
-        Professional tools for creating custom Minecraft content. Transform your ideas into in-game reality.
+        Professional tools for creating custom Minecraft content.
       </p>
-    </section>
-
-    <!-- Only two feature cards: Resource Hub + Totem Creator -->
-    <section class="features-grid">
-      <!-- RESOURCE HUB -->
-      <a href="#" class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-download"></i>
-        </div>
-        <h3 class="feature-title">Resource Hub</h3>
-        <p class="feature-description">
-          Access a library of community-created resources and templates.
-        </p>
-      </a>
-
-      <!-- TOTEM CREATOR (active) -->
-      <a href="totem-maker.html" class="feature-card active">
-        <div class="feature-icon">
-          <i class="fas fa-wand-magic-sparkles"></i>
-        </div>
-        <h3 class="feature-title">Totem Creator</h3>
-        <p class="feature-description">
-          Convert any GIF into animated Minecraft totems with our advanced creation tool.
-        </p>
-      </a>
     </section>
   </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
-      <a href="index.html" class="footer-logo">
-        <div class="footer-logo-text">
-          <span class="footer-logo-main">Lemon</span>
-          <span class="footer-logo-accent">Cord</span>
-        </div>
-      </a>
-
-      <!-- Copyright year updated to 2026 -->
       <p class="footer-text">© 2026 Lemon Cord. All rights reserved.</p>
-
       <div class="footer-social">
-        <a href="https://www.tiktok.com/@lemonadefor_you?_r=1&_t=ZS-93hJaVt9xDd" target="_blank" class="footer-social-link">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://discord.gg/PE4vGcZ3vY" target="_blank" class="footer-social-link">
-          <i class="fab fa-discord"></i>
-        </a>
+        <a href="#" class="footer-social-link"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="footer-social-link"><i class="fab fa-discord"></i></a>
       </div>
     </div>
   </div>
 </footer>
-
-<script>
-  const pageTransition = document.getElementById("pageTransition");
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
-
-  // Page transition on load
-  window.addEventListener("load", () => {
-    pageTransition.classList.add("animate-in");
-
-    setTimeout(() => {
-      pageTransition.style.display = "none";
-    }, 500);
-  });
-
-  // Page transition on navigation
-  document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", e => {
-      if (link.getAttribute("href") === "#") return;
-
-      e.preventDefault();
-      pageTransition.style.display = "block";
-      pageTransition.classList.remove("animate-in");
-
-      // Close mobile menu if open
-      navLinks.classList.remove("active");
-
-      // Trigger reflow
-      void pageTransition.offsetWidth;
-
-      pageTransition.classList.add("animate-out");
-
-      setTimeout(() => {
-        window.location.href = link.href;
-      }, 500);
-    });
-  });
-
-  // Mobile menu toggle
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-      navLinks.classList.remove("active");
-    }
-  });
-
-  // Close mobile menu on window resize
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      navLinks.classList.remove("active");
-    }
-  });
-</script>
 
 </body>
 </html>
